@@ -39,4 +39,4 @@ agriguard/
 │   └── .env
 └── docs/                 # Documentation
 ```
-Visit:- https://agriguard-one.vercel.app/
+Visit:- [https://agriguard-one.vercel.app/](https://agriguard2-0-liy8.vercel.app/app)
