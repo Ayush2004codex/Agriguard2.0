@@ -42,8 +42,10 @@ class WeatherService:
                         "timestamp": datetime.now().isoformat()
                     }
         except Exception as e:
-            return {"error": str(e)}
+            return {"error": f"HTTPX Exception: {str(e)}"}
         
+        if 'resp' in locals():
+            return {"error": f"Open-Meteo API Error {resp.status_code}: {resp.text}"}
         return {"error": "Failed to fetch weather data"}
     
     async def get_forecast(self, latitude: float, longitude: float, days: int = 7) -> Dict[str, Any]:
@@ -83,9 +85,11 @@ class WeatherService:
                         "generated_at": datetime.now().isoformat()
                     }
         except Exception as e:
-            return {"error": str(e)}
-        
-        return {"error": "Failed to fetch forecast"}
+            return {"error": f"HTTPX Exception: {str(e)}"}
+            
+        if 'resp' in locals():
+            return {"error": f"Open-Meteo API Error {resp.status_code}: {resp.text}"}
+        return {"error": "Failed to fetch weather forecast"}
     
     async def get_historical_weather(self, latitude: float, longitude: float, days_back: int = 7) -> Dict[str, Any]:
         """Get historical weather for trend analysis"""
