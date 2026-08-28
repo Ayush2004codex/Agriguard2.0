@@ -45,7 +45,7 @@ class GroqProvider(AIProvider):
     def __init__(self, api_key: str = None):
         self.api_key = api_key or os.getenv("GROQ_API_KEY", "")
         self.base_url = "https://api.groq.com/openai/v1"
-        self.model = "llama-3.3-70b-versatile"  # Latest model (Jan 2026)
+        self.model = "qwen/qwen3.8-27b"  # Groq's current fast model
         self.vision_model = "llama-3.2-11b-vision-preview"  # Current vision model
     
     async def analyze_image(self, image_base64: str, prompt: str) -> str:
